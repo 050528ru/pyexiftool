@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>exiftool.exiftool &mdash; PyExifTool 0.5.4 documentation</title>
+  <title>exiftool.exiftool &mdash; PyExifTool 0.5.5 documentation</title>
       <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
@@ -190,7 +190,7 @@ to undefined behaviour.</p>
 </div>
 </p></li>
 <li><p><strong>common_args</strong> (<em>list of str</em><em>, or </em><em>None.</em>) – <p>Pass in additional parameters for the stay-open instance of exiftool.</p>
-<p>Defaults to <code class="docutils literal notranslate"><span class="pre">['-G',</span> <span class="pre">'-n']</span></code> as this is the most common use case.</p>
+<p>Defaults to <code class="docutils literal notranslate"><span class="pre">[&quot;-G&quot;,</span> <span class="pre">&quot;-n&quot;]</span></code> as this is the most common use case.</p>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">-G</span></code> (groupName level 1 enabled) separates the output with <em>groupName:tag</em> to disambiguate same-named tags under different groups.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">-n</span></code> (print conversion disabled) improves the speed and consistency of output, and is more machine-parsable</p></li>
@@ -369,7 +369,7 @@ exiftool process.  By default, will use <code class="docutils literal notranslat
 <dd class="field-even"><p>Set a new encoding.</p>
 <ul class="simple">
 <li><p>If <em>new_encoding</em> is None, will detect it from <code class="docutils literal notranslate"><span class="pre">locale.getpreferredencoding(do_setlocale=False)</span></code> (do_setlocale is set to False as not to affect the caller).</p></li>
-<li><p>Default to <code class="docutils literal notranslate"><span class="pre">UTF-8</span></code> if nothing is returned by <code class="docutils literal notranslate"><span class="pre">getpreferredencoding</span></code></p></li>
+<li><p>Default to <code class="docutils literal notranslate"><span class="pre">utf-8</span></code> if nothing is returned by <code class="docutils literal notranslate"><span class="pre">getpreferredencoding</span></code></p></li>
 </ul>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -442,7 +442,7 @@ For filenames, this should be the system’s filesystem encoding.
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>params</strong> (<em>one</em><em> or </em><em>more string parameters</em>) – <p>One or more parameters to send to the <code class="docutils literal notranslate"><span class="pre">exiftool</span></code> subprocess.</p>
+<li><p><strong>params</strong> (<em>one</em><em> or </em><em>more string/bytes parameters</em>) – <p>One or more parameters to send to the <code class="docutils literal notranslate"><span class="pre">exiftool</span></code> subprocess.</p>
 <p>Typically passed in via <a class="reference external" href="https://docs.python.org/3/tutorial/controlflow.html#unpacking-argument-lists">Unpacking Argument Lists</a></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -499,11 +499,11 @@ name of the file it corresponds to in the key <code class="docutils literal notr
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>params</strong> (<em>one</em><em> or </em><em>more string parameters</em>) – <p>One or more parameters to send to the <code class="docutils literal notranslate"><span class="pre">exiftool</span></code> subprocess.</p>
+<dd class="field-odd"><p><strong>params</strong> (<em>one</em><em> or </em><em>more string/bytes parameters</em>) – <p>One or more parameters to send to the <code class="docutils literal notranslate"><span class="pre">exiftool</span></code> subprocess.</p>
 <p>Typically passed in via <a class="reference external" href="https://docs.python.org/3/tutorial/controlflow.html#unpacking-argument-lists">Unpacking Argument Lists</a></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The parameters to this function must be type <code class="docutils literal notranslate"><span class="pre">str</span></code></p>
+<p>The parameters to this function must be type <code class="docutils literal notranslate"><span class="pre">str</span></code> or <code class="docutils literal notranslate"><span class="pre">bytes</span></code>.</p>
 </div>
 </p>
 </dd>
