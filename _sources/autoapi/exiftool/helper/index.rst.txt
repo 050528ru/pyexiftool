@@ -175,7 +175,7 @@ Attributes
                       which may cause unexpected behavior if you're using one and comparing the result to the other.
                       Read `ExifTool Common Mistakes - Over-use of Wildcards in File Names`_ for some related info.
 
-      :type files: str or list
+      :type files: Any or List(Any) - see Note
 
 
       :param tags: Tag(s) to read.  If tags is None, or [], method will returns all tags
@@ -231,7 +231,7 @@ Attributes
                       which may cause unexpected behavior if you're using one and comparing the result to the other.
                       Read `ExifTool Common Mistakes - Over-use of Wildcards in File Names`_ for some related info.
 
-      :type files: str or list
+      :type files: Any or List(Any) - see Note
 
 
       :param tags: Tag(s) to write.

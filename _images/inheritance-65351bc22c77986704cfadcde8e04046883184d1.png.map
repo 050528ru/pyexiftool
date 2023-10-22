@@ -1,4 +1,4 @@
 <map id="inheritance5a6a0a58d0" name="inheritance5a6a0a58d0">
 <area shape="rect" id="node1" href="../../../reference/1-exiftool.html#module-exiftool.ExifTool" target="_top" title="Run the `exiftool` command&#45;line tool and communicate with it." alt="" coords="19,19,114,91"/>
-<area shape="rect" id="node2" href="../../../reference/2-helper.html#module-exiftool.ExifToolHelper" target="_top" title="This class extends the low&#45;level :py:class:`exiftool.ExifTool` class with &#39;wrapper&#39;/&#39;helper&#39; functionality" alt="" coords="162,19,317,91"/>
+<area shape="rect" id="node2" href="../../../reference/2-helper.html#module-exiftool.ExifToolHelper" target="_top" title="This class extends the low&#45;level :py:class:`exiftool.ExifTool` class with &#39;wrapper&#39;/&#39;helper&#39; functionality" alt="" coords="162,19,316,91"/>
 </map>

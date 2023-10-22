@@ -1,4 +1,4 @@
 <map id="inheritance0240ca0da6" name="inheritance0240ca0da6">
-<area shape="rect" id="node1" href="#exiftool.exceptions.ExifToolException" target="_top" title="Generic Base class for all ExifTool error classes" alt="" coords="19,19,205,91"/>
-<area shape="rect" id="node2" href="#exiftool.exceptions.ExifToolTagNameError" target="_top" title="ExifToolHelper found an invalid tag name" alt="" coords="253,19,482,91"/>
+<area shape="rect" id="node1" href="#exiftool.exceptions.ExifToolException" target="_top" title="Generic Base class for all ExifTool error classes" alt="" coords="19,19,204,91"/>
+<area shape="rect" id="node2" href="#exiftool.exceptions.ExifToolTagNameError" target="_top" title="ExifToolHelper found an invalid tag name" alt="" coords="252,19,480,91"/>
 </map>

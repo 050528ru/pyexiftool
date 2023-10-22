@@ -1,4 +1,4 @@
 <map id="inheritance36e141d5a4" name="inheritance36e141d5a4">
-<area shape="rect" id="node1" href="#exiftool.exceptions.ExifToolException" target="_top" title="Generic Base class for all ExifTool error classes" alt="" coords="19,19,205,91"/>
-<area shape="rect" id="node2" href="#exiftool.exceptions.ExifToolVersionError" target="_top" title="Generic Error to represent some version mismatch." alt="" coords="253,19,463,91"/>
+<area shape="rect" id="node1" href="#exiftool.exceptions.ExifToolException" target="_top" title="Generic Base class for all ExifTool error classes" alt="" coords="19,19,204,91"/>
+<area shape="rect" id="node2" href="#exiftool.exceptions.ExifToolVersionError" target="_top" title="Generic Error to represent some version mismatch." alt="" coords="252,19,462,91"/>
 </map>

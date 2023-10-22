@@ -1,4 +1,4 @@
 <map id="inheritance6a767b389f" name="inheritance6a767b389f">
-<area shape="rect" id="node1" href="#exiftool.exceptions.ExifToolException" target="_top" title="Generic Base class for all ExifTool error classes" alt="" coords="19,19,205,91"/>
-<area shape="rect" id="node2" href="#exiftool.exceptions.ExifToolProcessStateError" target="_top" title="Base class for all errors related to the invalid state of `exiftool` subprocess" alt="" coords="253,19,514,91"/>
+<area shape="rect" id="node1" href="#exiftool.exceptions.ExifToolException" target="_top" title="Generic Base class for all ExifTool error classes" alt="" coords="19,19,204,91"/>
+<area shape="rect" id="node2" href="#exiftool.exceptions.ExifToolProcessStateError" target="_top" title="Base class for all errors related to the invalid state of `exiftool` subprocess" alt="" coords="252,19,512,91"/>
 </map>

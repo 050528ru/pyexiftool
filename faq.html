@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Frequently Asked Questions &mdash; PyExifTool 0.5.5 documentation</title>
+  <title>Frequently Asked Questions &mdash; PyExifTool 0.5.6 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
@@ -58,6 +58,11 @@
 <li class="toctree-l3"><a class="reference internal" href="#ways-to-make-the-ouptut-match">Ways to make the ouptut match</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#pyexiftool-json-turns-some-text-fields-into-numbers">PyExifTool json turns some text fields into numbers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#workaround-to-enable-output-as-string">Workaround to enable output as string</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#i-would-like-to-use-a-faster-json-string-parser">I would like to use a faster json string parser</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#i-m-getting-an-error-how-do-i-debug-pyexiftool-output">I’m getting an error! How do I debug PyExifTool output?</a></li>
 </ul>
 </li>
@@ -171,6 +176,73 @@ Y Resolution                    : 72
 </ul>
 </section>
 </section>
+<section id="pyexiftool-json-turns-some-text-fields-into-numbers">
+<span id="set-json-loads-faq"></span><h2>PyExifTool json turns some text fields into numbers<a class="headerlink" href="#pyexiftool-json-turns-some-text-fields-into-numbers" title="Permalink to this headline"></a></h2>
+<p>A strange behavior of <em>exiftool</em> is documented in the <a class="reference external" href="https://exiftool.org/exiftool_pod.html#OPTIONS">exiftool documentation</a>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span><span class="n">j</span><span class="p">[[</span><span class="o">+</span><span class="p">]</span><span class="o">=</span><span class="n">JSONFILE</span><span class="p">]</span> <span class="p">(</span><span class="o">-</span><span class="n">json</span><span class="p">)</span>
+
+        <span class="n">Note</span> <span class="n">that</span> <span class="n">ExifTool</span> <span class="n">quotes</span> <span class="n">JSON</span> <span class="n">values</span> <span class="n">only</span> <span class="k">if</span> <span class="n">they</span> <span class="n">don</span><span class="s1">&#39;t look like numbers</span>
+        <span class="p">(</span><span class="n">regardless</span> <span class="n">of</span> <span class="n">the</span> <span class="n">original</span> <span class="n">storage</span> <span class="nb">format</span> <span class="ow">or</span> <span class="n">the</span> <span class="n">relevant</span> <span class="n">metadata</span> <span class="n">specification</span><span class="p">)</span><span class="o">.</span>
+</pre></div>
+</div>
+<p>This causes a peculiar behavior if you set a text metadata field to a string that looks like a number:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">exiftool</span>
+<span class="k">with</span> <span class="n">exiftool</span><span class="o">.</span><span class="n">ExifToolHelper</span><span class="p">()</span> <span class="k">as</span> <span class="n">et</span><span class="p">:</span>
+        <span class="c1"># Comment is a STRING field</span>
+        <span class="n">et</span><span class="o">.</span><span class="n">set_tags</span><span class="p">(</span><span class="s2">&quot;rose.jpg&quot;</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;Comment&quot;</span><span class="p">:</span> <span class="s2">&quot;1.10&quot;</span><span class="p">})</span>  <span class="c1"># string: &quot;1.10&quot; != &quot;1.1&quot;</span>
+
+        <span class="c1"># FocalLength is a FLOAT field</span>
+        <span class="n">et</span><span class="o">.</span><span class="n">set_tags</span><span class="p">(</span><span class="s2">&quot;rose.jpg&quot;</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;FocalLength&quot;</span><span class="p">:</span> <span class="mf">1.10</span><span class="p">})</span>  <span class="c1"># float: 1.10 == 1.1</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">et</span><span class="o">.</span><span class="n">get_tags</span><span class="p">(</span><span class="s2">&quot;rose.jpg&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;Comment&quot;</span><span class="p">,</span> <span class="s2">&quot;FocalLength&quot;</span><span class="p">]))</span>
+
+        <span class="c1"># Prints: [{&#39;SourceFile&#39;: &#39;rose.jpg&#39;, &#39;File:Comment&#39;: 1.1, &#39;EXIF:FocalLength&#39;: 1.1}]</span>
+</pre></div>
+</div>
+<section id="workaround-to-enable-output-as-string">
+<h3>Workaround to enable output as string<a class="headerlink" href="#workaround-to-enable-output-as-string" title="Permalink to this headline"></a></h3>
+<p>There is no universal fix which wouldn’t affect other behaviors in PyExifTool, so this is an advanced workaround if you encounter this specific problem.</p>
+<p>PyExifTool does not do any processing on the fields returned by <em>exiftool</em>.  In effect, what is returned is processed directly by <code class="docutils literal notranslate"><span class="pre">json.loads()</span></code> by default.</p>
+<p>You can change the behavior of the json string parser, or specify a different one using <a class="reference internal" href="reference/1-exiftool.html#exiftool.ExifTool.set_json_loads" title="exiftool.ExifTool.set_json_loads"><code class="xref py py-meth docutils literal notranslate"><span class="pre">exiftool.ExifTool.set_json_loads()</span></code></a>.</p>
+<p>The <a class="reference external" href="https://docs.python.org/3/library/json.html#json.load">documentation of CPython’s json.load</a> allows <code class="docutils literal notranslate"><span class="pre">parse_float</span></code> to be any parser of choice when a float is encountered in a JSON file.  Thus, you can force the float to be interpreted as a string.
+However, as you can see below, it also <em>changes the behavior of all float fields</em>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">exiftool</span><span class="o">,</span> <span class="nn">json</span>
+<span class="k">with</span> <span class="n">exiftool</span><span class="o">.</span><span class="n">ExifToolHelper</span><span class="p">()</span> <span class="k">as</span> <span class="n">et</span><span class="p">:</span>
+        <span class="n">et</span><span class="o">.</span><span class="n">set_json_loads</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">,</span> <span class="n">parse_float</span><span class="o">=</span><span class="nb">str</span><span class="p">)</span>
+
+        <span class="c1"># Comment is a STRING field</span>
+        <span class="n">et</span><span class="o">.</span><span class="n">set_tags</span><span class="p">(</span><span class="s2">&quot;rose.jpg&quot;</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;Comment&quot;</span><span class="p">:</span> <span class="s2">&quot;1.10&quot;</span><span class="p">})</span>  <span class="c1"># string: &quot;1.10&quot; == &quot;1.10&quot;</span>
+
+        <span class="c1"># FocalLength is a FLOAT field</span>
+        <span class="n">et</span><span class="o">.</span><span class="n">set_tags</span><span class="p">(</span><span class="s2">&quot;rose.jpg&quot;</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;FocalLength&quot;</span><span class="p">:</span> <span class="mf">1.10</span><span class="p">})</span>  <span class="c1"># float: 1.1 == &quot;1.1&quot;</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">et</span><span class="o">.</span><span class="n">get_tags</span><span class="p">(</span><span class="s2">&quot;rose.jpg&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;Comment&quot;</span><span class="p">,</span> <span class="s2">&quot;FocalLength&quot;</span><span class="p">]))</span>
+
+        <span class="c1"># Prints: [{&#39;SourceFile&#39;: &#39;rose.jpg&#39;, &#39;File:Comment&#39;: &#39;1.10&#39;, &#39;EXIF:FocalLength&#39;: &#39;1.1&#39;}]</span>
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Unfortunately you can either change all float fields to a string, or possibly lose some float precision when working with floats in string metadata fields.</p>
+<p>There isn’t any known universal workaround which wouldn’t break one thing or the other, as it is an underlying <em>exiftool</em> quirk.</p>
+</div>
+<p>There are other edge cases which may exhibit quirky behavior when storing numbers and whitespace only to text fields (See <a class="reference external" href="https://github.com/sylikc/pyexiftool/blob/master/tests/test_helper_tags_float.py">test cases related to numeric tags</a>).  Since PyExifTool cannot accommodate all possible edge cases,
+this workaround will allow you to configure PyExifTool to work in your environment!</p>
+</section>
+</section>
+<section id="i-would-like-to-use-a-faster-json-string-parser">
+<h2>I would like to use a faster json string parser<a class="headerlink" href="#i-would-like-to-use-a-faster-json-string-parser" title="Permalink to this headline"></a></h2>
+<p>By default, PyExifTool uses the built-in <code class="docutils literal notranslate"><span class="pre">json</span></code> library to load the json string returned by <em>exiftool</em>.  If you would like to use an alternate library, set it manually using <a class="reference internal" href="reference/1-exiftool.html#exiftool.ExifTool.set_json_loads" title="exiftool.ExifTool.set_json_loads"><code class="xref py py-meth docutils literal notranslate"><span class="pre">exiftool.ExifTool.set_json_loads()</span></code></a></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">exiftool</span><span class="o">,</span> <span class="nn">json</span>
+<span class="k">with</span> <span class="n">exiftool</span><span class="o">.</span><span class="n">ExifToolHelper</span><span class="p">()</span> <span class="k">as</span> <span class="n">et</span><span class="p">:</span>
+        <span class="n">et</span><span class="o">.</span><span class="n">set_json_loads</span><span class="p">(</span><span class="n">ujson</span><span class="o">.</span><span class="n">loads</span><span class="p">)</span>
+        <span class="o">...</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In PyExifTool version before 0.5.6, <code class="docutils literal notranslate"><span class="pre">ujson</span></code> was supported automatically if the package was installed.</p>
+<p>To support any possible alternative JSON library, this behavior has now been changed and it must be enabled manually.</p>
+</div>
+</section>
 <section id="i-m-getting-an-error-how-do-i-debug-pyexiftool-output">
 <h2>I’m getting an error! How do I debug PyExifTool output?<a class="headerlink" href="#i-m-getting-an-error-how-do-i-debug-pyexiftool-output" title="Permalink to this headline"></a></h2>
 <p>To assist debugging, ExifTool has a <code class="docutils literal notranslate"><span class="pre">logger</span></code> in the constructor <a class="reference internal" href="reference/1-exiftool.html#exiftool.ExifTool.__init__" title="exiftool.ExifTool.__init__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">exiftool.ExifTool.__init__()</span></code></a>.  You can also specify the logger after constructing the object by using the <a class="reference internal" href="reference/1-exiftool.html#exiftool.ExifTool.logger" title="exiftool.ExifTool.logger"><code class="xref py py-attr docutils literal notranslate"><span class="pre">exiftool.ExifTool.logger</span></code></a> property.</p>
@@ -198,7 +270,7 @@ Y Resolution                    : 72
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2022, Kevin M (sylikc).</p>
+    <p>&#169; Copyright 2023, Kevin M (sylikc).</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

@@ -1,5 +1,5 @@
 <map id="inheritance45bd26d457" name="inheritance45bd26d457">
-<area shape="rect" id="node1" href="reference/1-exiftool.html#module-exiftool.ExifTool" target="_top" title="Run the `exiftool` command&#45;line tool and communicate with it." alt="" coords="19,19,189,91"/>
-<area shape="rect" id="node3" href="reference/2-helper.html#module-exiftool.ExifToolHelper" target="_top" title="This class extends the low&#45;level :py:class:`exiftool.ExifTool` class with &#39;wrapper&#39;/&#39;helper&#39; functionality" alt="" coords="237,19,466,91"/>
-<area shape="rect" id="node2" href="reference/3-alpha.html#module-exiftool.ExifToolAlpha" target="_top" title="This class is for the &quot;experimental&quot; functionality. &#160;In the grand scheme of things, this class" alt="" coords="514,19,735,91"/>
+<area shape="rect" id="node1" href="reference/1-exiftool.html#module-exiftool.ExifTool" target="_top" title="Run the `exiftool` command&#45;line tool and communicate with it." alt="" coords="19,19,188,91"/>
+<area shape="rect" id="node3" href="reference/2-helper.html#module-exiftool.ExifToolHelper" target="_top" title="This class extends the low&#45;level :py:class:`exiftool.ExifTool` class with &#39;wrapper&#39;/&#39;helper&#39; functionality" alt="" coords="236,19,464,91"/>
+<area shape="rect" id="node2" href="reference/3-alpha.html#module-exiftool.ExifToolAlpha" target="_top" title="This class is for the &quot;experimental&quot; functionality. &#160;In the grand scheme of things, this class" alt="" coords="512,19,732,91"/>
 </map>

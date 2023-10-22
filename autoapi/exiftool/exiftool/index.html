@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>exiftool.exiftool &mdash; PyExifTool 0.5.5 documentation</title>
+  <title>exiftool.exiftool &mdash; PyExifTool 0.5.6 documentation</title>
       <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
@@ -129,19 +129,11 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="#exiftool.exiftool.ENCODING_UTF8" title="exiftool.exiftool.ENCODING_UTF8"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ENCODING_UTF8</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#exiftool.exiftool.JSONDecodeError" title="exiftool.exiftool.JSONDecodeError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">JSONDecodeError</span></code></a></p></td>
-<td><p></p></td>
-</tr>
 </tbody>
 </table>
 <dl class="py data">
 <dt class="sig sig-object py" id="exiftool.exiftool.ENCODING_UTF8">
 <span class="sig-prename descclassname"><span class="pre">exiftool.exiftool.</span></span><span class="sig-name descname"><span class="pre">ENCODING_UTF8</span></span><em class="property"> <span class="pre">:str</span> <span class="pre">=</span> <span class="pre">utf-8</span></em><a class="headerlink" href="#exiftool.exiftool.ENCODING_UTF8" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py data">
-<dt class="sig sig-object py" id="exiftool.exiftool.JSONDecodeError">
-<span class="sig-prename descclassname"><span class="pre">exiftool.exiftool.</span></span><span class="sig-name descname"><span class="pre">JSONDecodeError</span></span><a class="headerlink" href="#exiftool.exiftool.JSONDecodeError" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py class">
@@ -225,6 +217,10 @@ exiftool process.  By default, will use <code class="docutils literal notranslat
 <span class="sig-name descname"><span class="pre">logger</span></span><a class="headerlink" href="#exiftool.exiftool.ExifTool.logger" title="Permalink to this definition"></a></dt>
 <dd><p>Write-only property to set the class of logging.Logger</p>
 <p>If this is set, then status messages will log out to the given class.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This can be set and unset (set to <code class="docutils literal notranslate"><span class="pre">None</span></code>) at any time, regardless of whether the subprocess is running (<a class="reference internal" href="#exiftool.exiftool.ExifTool.running" title="exiftool.exiftool.ExifTool.running"><code class="xref py py-attr docutils literal notranslate"><span class="pre">running</span></code></a> == True) or not.</p>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Setter</dt>
 <dd class="field-odd"><p>Specify an object to log to.  The class is not checked, but validation is done to ensure the object has callable methods <code class="docutils literal notranslate"><span class="pre">info</span></code>, <code class="docutils literal notranslate"><span class="pre">warning</span></code>, <code class="docutils literal notranslate"><span class="pre">error</span></code>, <code class="docutils literal notranslate"><span class="pre">critical</span></code>, <code class="docutils literal notranslate"><span class="pre">exception</span></code>.</p>
@@ -352,7 +348,7 @@ exiftool process.  By default, will use <code class="docutils literal notranslat
 <dd class="field-even"><p>str, Path, None</p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>Optional[str]</p>
+<dd class="field-odd"><p>Optional[Union[str, pathlib.Path]]</p>
 </dd>
 </dl>
 </dd></dl>
@@ -412,7 +408,7 @@ If path given is not absolute, searches environment <code class="docutils litera
 <dd class="field-even"><p>str, Path</p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>str</p>
+<dd class="field-odd"><p>Union[str, pathlib.Path]</p>
 </dd>
 </dl>
 </dd></dl>
@@ -648,14 +644,54 @@ will detect the state change and reset the status accordingly.</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="exiftool.exiftool.ExifTool.set_json_loads">
+<span class="sig-name descname"><span class="pre">set_json_loads</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">json_loads</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#exiftool.exiftool.ExifTool.set_json_loads" title="Permalink to this definition"></a></dt>
+<dd><p><strong>Advanced</strong>: Override default built-in <code class="docutils literal notranslate"><span class="pre">json.loads()</span></code> method.  The method is only used once in <a class="reference internal" href="#exiftool.exiftool.ExifTool.execute_json" title="exiftool.exiftool.ExifTool.execute_json"><code class="xref py py-meth docutils literal notranslate"><span class="pre">execute_json()</span></code></a></p>
+<p>This allows using a different json string parser.</p>
+<p>(Alternate json libraries typically provide faster speed than the
+built-in implementation, more supported features, and/or different behavior.)</p>
+<p>Examples of json libraries: <a class="reference external" href="https://pypi.org/project/orjson/">orjson</a>, <a class="reference external" href="https://pypi.org/project/python-rapidjson/">rapidjson</a>, <a class="reference external" href="https://pypi.org/project/ujson/">ujson</a>, …</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This method is designed to be called the same way you would expect to call the provided <code class="docutils literal notranslate"><span class="pre">json_loads</span></code> method.</p>
+<p>Include any <code class="docutils literal notranslate"><span class="pre">kwargs</span></code> you would in the call.</p>
+<p>For example, to pass additional arguments to <code class="docutils literal notranslate"><span class="pre">json.loads()</span></code>: <code class="docutils literal notranslate"><span class="pre">set_json_loads(json.loads,</span> <span class="pre">parse_float=str)</span></code></p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This can be set at any time, regardless of whether the subprocess is running (<a class="reference internal" href="#exiftool.exiftool.ExifTool.running" title="exiftool.exiftool.ExifTool.running"><code class="xref py py-attr docutils literal notranslate"><span class="pre">running</span></code></a> == True) or not.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This setter does not check whether the method provided actually parses json.  Undefined behavior or crashes may occur if used incorrectly</p>
+<p>This is <strong>advanced configuration</strong> for specific use cases only.</p>
+<p>For an example use case, see the <a class="reference internal" href="../../../faq.html#set-json-loads-faq"><span class="std std-ref">FAQ</span></a></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>json_loads</strong> (<em>callable</em>) – A callable method to replace built-in <code class="docutils literal notranslate"><span class="pre">json.loads</span></code> used in <a class="reference internal" href="#exiftool.exiftool.ExifTool.execute_json" title="exiftool.exiftool.ExifTool.execute_json"><code class="xref py py-meth docutils literal notranslate"><span class="pre">execute_json()</span></code></a></p></li>
+<li><p><strong>kwargs</strong> – Parameters passed to the <code class="docutils literal notranslate"><span class="pre">json_loads</span></code> method call</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>TypeError</strong> – If <code class="docutils literal notranslate"><span class="pre">json_loads</span></code> is not callable</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="exiftool.exiftool.ExifTool.terminate">
 <span class="sig-name descname"><span class="pre">terminate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">30</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_del</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#exiftool.exiftool.ExifTool.terminate" title="Permalink to this definition"></a></dt>
 <dd><p>Terminate the <em>exiftool</em> subprocess.</p>
 <p>If the subprocess isn’t running, this method will throw a warning, and do nothing.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>There is a bug in CPython 3.8+ on Windows where terminate() does not work during __del__()
-See CPython issue <a class="reference external" href="https://bugs.python.org/issue43784">starting a thread in __del__ hangs at interpreter shutdown</a> for more info.</p>
+<p>There is a bug in CPython 3.8+ on Windows where terminate() does not work during <code class="docutils literal notranslate"><span class="pre">__del__()</span></code></p>
+<p>See CPython issue <a class="reference external" href="https://github.com/python/cpython/issues/87950">starting a thread in __del__ hangs at interpreter shutdown</a> for more info.</p>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -705,7 +741,7 @@ See CPython issue <a class="reference external" href="https://bugs.python.org/is
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2022, Kevin M (sylikc).</p>
+    <p>&#169; Copyright 2023, Kevin M (sylikc).</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

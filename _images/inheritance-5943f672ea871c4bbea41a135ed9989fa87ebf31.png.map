@@ -1,5 +1,5 @@
 <map id="inheritancea2e9462b99" name="inheritancea2e9462b99">
-<area shape="rect" id="node1" href="#exiftool.exceptions.ExifToolException" target="_top" title="Generic Base class for all ExifTool error classes" alt="" coords="17,17,186,83"/>
-<area shape="rect" id="node2" href="#exiftool.exceptions.ExifToolExecuteException" target="_top" title="This is the base exception class for all execute() associated errors." alt="" coords="230,17,465,83"/>
+<area shape="rect" id="node1" href="#exiftool.exceptions.ExifToolException" target="_top" title="Generic Base class for all ExifTool error classes" alt="" coords="17,17,185,83"/>
+<area shape="rect" id="node2" href="#exiftool.exceptions.ExifToolExecuteException" target="_top" title="This is the base exception class for all execute() associated errors." alt="" coords="229,17,464,83"/>
 <area shape="rect" id="node3" href="#exiftool.exceptions.ExifToolOutputEmptyError" target="_top" title="ExifTool execute_json() expected output, but execute() did not return any output on stdout" alt="" coords="508,17,751,83"/>
 </map>

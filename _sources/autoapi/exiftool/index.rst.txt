@@ -60,7 +60,7 @@ Package Contents
 ----------------
 
 .. py:data:: __version__
-   :annotation: = 0.5.5
+   :annotation: = 0.5.6
 
    
 

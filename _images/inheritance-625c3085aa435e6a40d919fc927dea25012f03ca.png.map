@@ -1,5 +1,5 @@
 <map id="inheritancede8c2bd96e" name="inheritancede8c2bd96e">
-<area shape="rect" id="node1" href="#exiftool.exceptions.ExifToolException" target="_top" title="Generic Base class for all ExifTool error classes" alt="" coords="18,18,189,84"/>
-<area shape="rect" id="node2" href="#exiftool.exceptions.ExifToolExecuteException" target="_top" title="This is the base exception class for all execute() associated errors." alt="" coords="234,18,474,84"/>
-<area shape="rect" id="node3" href="#exiftool.exceptions.ExifToolJSONInvalidError" target="_top" title="ExifTool execute_json() expected valid JSON to be returned, but got invalid JSON." alt="" coords="518,18,750,84"/>
+<area shape="rect" id="node1" href="#exiftool.exceptions.ExifToolException" target="_top" title="Generic Base class for all ExifTool error classes" alt="" coords="18,18,189,85"/>
+<area shape="rect" id="node2" href="#exiftool.exceptions.ExifToolExecuteException" target="_top" title="This is the base exception class for all execute() associated errors." alt="" coords="234,18,474,85"/>
+<area shape="rect" id="node3" href="#exiftool.exceptions.ExifToolJSONInvalidError" target="_top" title="ExifTool execute_json() expected valid JSON to be returned, but got invalid JSON." alt="" coords="518,18,750,85"/>
 </map>

@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>exiftool.helper &mdash; PyExifTool 0.5.5 documentation</title>
+  <title>exiftool.helper &mdash; PyExifTool 0.5.6 documentation</title>
       <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
@@ -142,7 +142,7 @@
 <div class="graphviz"><img src="../../../_images/inheritance-65351bc22c77986704cfadcde8e04046883184d1.png" alt="Inheritance diagram of exiftool.helper.ExifToolHelper" usemap="#inheritance5a6a0a58d0" class="inheritance graphviz" /></div>
 <map id="inheritance5a6a0a58d0" name="inheritance5a6a0a58d0">
 <area shape="rect" id="node1" href="../../../reference/1-exiftool.html#module-exiftool.ExifTool" target="_top" title="Run the `exiftool` command&#45;line tool and communicate with it." alt="" coords="19,19,114,91"/>
-<area shape="rect" id="node2" href="../../../reference/2-helper.html#module-exiftool.ExifToolHelper" target="_top" title="This class extends the low&#45;level :py:class:`exiftool.ExifTool` class with &#39;wrapper&#39;/&#39;helper&#39; functionality" alt="" coords="162,19,317,91"/>
+<area shape="rect" id="node2" href="../../../reference/2-helper.html#module-exiftool.ExifToolHelper" target="_top" title="This class extends the low&#45;level :py:class:`exiftool.ExifTool` class with &#39;wrapper&#39;/&#39;helper&#39; functionality" alt="" coords="162,19,316,91"/>
 </map><p>This class extends the low-level <a class="reference internal" href="../../../reference/1-exiftool.html#module-exiftool.ExifTool" title="exiftool.ExifTool"><code class="xref py py-class docutils literal notranslate"><span class="pre">exiftool.ExifTool</span></code></a> class with ‘wrapper’/’helper’ functionality</p>
 <p>It keeps low-level core functionality with the base class but extends helper functions in a separate class</p>
 <dl class="field-list simple">
@@ -291,7 +291,7 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>files</strong> (<em>str</em><em> or </em><em>list</em>) – <p>File(s) to be worked on.</p>
+<li><p><strong>files</strong> (<em>Any</em><em> or </em><em>List</em><em>(</em><em>Any</em><em>) </em><em>- see Note</em>) – <p>File(s) to be worked on.</p>
 <ul>
 <li><p>If a non-iterable is provided, it will get tags for a single item (str(non-iterable))</p></li>
 <li><p>If an iterable is provided, the list is passed into <code class="xref py py-meth docutils literal notranslate"><span class="pre">execute_json()</span></code> verbatim.</p></li>
@@ -356,7 +356,7 @@ Read <a class="reference external" href="https://exiftool.org/mistakes.html#M2">
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>files</strong> (<em>str</em><em> or </em><em>list</em>) – <p>File(s) to be worked on.</p>
+<li><p><strong>files</strong> (<em>Any</em><em> or </em><em>List</em><em>(</em><em>Any</em><em>) </em><em>- see Note</em>) – <p>File(s) to be worked on.</p>
 <ul>
 <li><p>If a non-iterable is provided, it will get tags for a single item (str(non-iterable))</p></li>
 <li><p>If an iterable is provided, the list is passed into <code class="xref py py-meth docutils literal notranslate"><span class="pre">execute_json()</span></code> verbatim.</p></li>
@@ -440,7 +440,7 @@ Read <a class="reference external" href="https://exiftool.org/mistakes.html#M2">
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2022, Kevin M (sylikc).</p>
+    <p>&#169; Copyright 2023, Kevin M (sylikc).</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
