@@ -33,12 +33,8 @@ Attributes
    exiftool.helper.TUPLE_STR_BYTES
 
 
-.. py:data:: TUPLE_STR_BYTES
-   
-
-   
-
 .. py:class:: ExifToolHelper(auto_start = True, check_execute = True, check_tag_names = True, **kwargs)
+
 
    Bases: :py:obj:`exiftool.exiftool.ExifTool`
 
@@ -55,16 +51,16 @@ Attributes
 
    :param kwargs: All other parameters are passed directly to the super-class constructor: :py:meth:`exiftool.ExifTool.__init__()`
 
-   .. py:method:: auto_start(self)
-      :property:
+   .. py:property:: auto_start
+      :type: bool
 
       Read-only property.  Gets the current setting passed into the constructor as to whether auto_start is enabled or not.
 
       (There's really no point to having this a read-write property, but allowing a read can be helpful at runtime to detect expected behavior.)
 
 
-   .. py:method:: check_execute(self)
-      :property:
+   .. py:property:: check_execute
+      :type: bool
 
       Flag to enable/disable checking exit status (return code) on execute
 
@@ -86,8 +82,8 @@ Attributes
       :type: bool
 
 
-   .. py:method:: check_tag_names(self)
-      :property:
+   .. py:property:: check_tag_names
+      :type: bool
 
       Flag to enable/disable checking of tag names
 
@@ -124,7 +120,7 @@ Attributes
       .. _ExifTool Tag Names: https://exiftool.org/TagNames/
 
 
-   .. py:method:: execute(self, *params, **kwargs)
+   .. py:method:: execute(*params, **kwargs)
 
       Override the :py:meth:`exiftool.ExifTool.execute()` method
 
@@ -135,7 +131,7 @@ Attributes
       :raises ExifToolExecuteError: If :py:attr:`check_execute` == True, and exit status was non-zero
 
 
-   .. py:method:: get_metadata(self, files, params = None)
+   .. py:method:: get_metadata(files, params = None)
 
       Return all metadata for the given files.
 
@@ -153,7 +149,7 @@ Attributes
       :return: The return value will have the format described in the documentation of :py:meth:`get_tags()`.
 
 
-   .. py:method:: get_tags(self, files, tags, params = None)
+   .. py:method:: get_tags(files, tags, params = None)
 
       Return only specified tags for the given files.
 
@@ -202,14 +198,14 @@ Attributes
 
 
 
-   .. py:method:: run(self)
+   .. py:method:: run()
 
       override the :py:meth:`exiftool.ExifTool.run()` method
 
       Will not attempt to run if already running (so no warning about 'ExifTool already running' will trigger)
 
 
-   .. py:method:: set_tags(self, files, tags, params = None)
+   .. py:method:: set_tags(files, tags, params = None)
 
       Writes the values of the specified tags for the given file(s).
 
@@ -268,7 +264,7 @@ Attributes
 
 
 
-   .. py:method:: terminate(self, **opts)
+   .. py:method:: terminate(**opts)
 
       Overrides the :py:meth:`exiftool.ExifTool.terminate()` method.
 
@@ -277,4 +273,10 @@ Attributes
       :param opts: passed directly to the parent call :py:meth:`exiftool.ExifTool.terminate()`
 
 
+
+.. py:data:: TUPLE_STR_BYTES
+   :type: tuple
+   :value: ()
+
+   
 

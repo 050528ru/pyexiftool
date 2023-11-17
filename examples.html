@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Examples / Quick Start &mdash; PyExifTool 0.5.6 documentation</title>
@@ -12,10 +12,11 @@
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
-        <script src="_static/doctools.js"></script>
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=722679d6"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -28,14 +29,18 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="index.html" class="icon icon-home"> PyExifTool
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            PyExifTool
           </a>
               <div class="version">
                 0.5
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -82,8 +87,8 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>Examples / Quick Start</li>
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Examples / Quick Start</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/examples.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -94,10 +99,10 @@
            <div itemprop="articleBody">
              
   <section id="examples-quick-start">
-<h1>Examples / Quick Start<a class="headerlink" href="#examples-quick-start" title="Permalink to this headline"></a></h1>
+<h1>Examples / Quick Start<a class="headerlink" href="#examples-quick-start" title="Link to this heading"></a></h1>
 <p>Try it yourself: All of these examples are using the images provided in the <a class="reference external" href="https://github.com/sylikc/pyexiftool/tree/master/tests/images">tests directory</a> in the source</p>
 <section id="understanding-input-and-output-from-pyexiftool-base-methods">
-<h2>Understanding input and output from PyExifTool base methods<a class="headerlink" href="#understanding-input-and-output-from-pyexiftool-base-methods" title="Permalink to this headline"></a></h2>
+<h2>Understanding input and output from PyExifTool base methods<a class="headerlink" href="#understanding-input-and-output-from-pyexiftool-base-methods" title="Link to this heading"></a></h2>
 <p>Almost all methods in PyExifTool revolve around the usage of two methods from the base <a class="reference internal" href="reference/1-exiftool.html#module-exiftool.ExifTool" title="exiftool.ExifTool"><code class="xref py py-class docutils literal notranslate"><span class="pre">exiftool.ExifTool</span></code></a> class.</p>
 <p><strong>It is important to understand the ouput from each of these commands</strong>, so here’s a quick summary (you can click through to the API to read more details)</p>
 <div class="admonition note">
@@ -105,11 +110,12 @@
 <p>Because both methods are inherited by <a class="reference internal" href="reference/2-helper.html#module-exiftool.ExifToolHelper" title="exiftool.ExifToolHelper"><code class="xref py py-class docutils literal notranslate"><span class="pre">exiftool.ExifToolHelper</span></code></a> and <a class="reference internal" href="reference/3-alpha.html#module-exiftool.ExifToolAlpha" title="exiftool.ExifToolAlpha"><code class="xref py py-class docutils literal notranslate"><span class="pre">exiftool.ExifToolAlpha</span></code></a>, you can call it from those classes as well.</p>
 </div>
 <section id="input-parameters">
-<h3>Input parameters<a class="headerlink" href="#input-parameters" title="Permalink to this headline"></a></h3>
+<span id="examples-input-params"></span><h3>Input parameters<a class="headerlink" href="#input-parameters" title="Link to this heading"></a></h3>
 <p>Both methods take an argument list <code class="docutils literal notranslate"><span class="pre">*args</span></code>.  Examples:</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>As a general rule of thumb, if there is an <strong>unquoted space on the command line</strong> to <em>exiftool</em>, it’s a <strong>separate argument to the method</strong> in PyExifTool.</p>
+<p>If you have a working <cite>exiftool</cite> command-line but having trouble figuring out how to properly separate the arguments, please refer to the <a class="reference internal" href="faq.html#shlex-split"><span class="std std-ref">FAQ</span></a></p>
 </div>
 <ul>
 <li><p>Calling directly:</p>
@@ -180,7 +186,7 @@
 </ul>
 </section>
 <section id="output-values">
-<h3>Output values<a class="headerlink" href="#output-values" title="Permalink to this headline"></a></h3>
+<h3>Output values<a class="headerlink" href="#output-values" title="Link to this heading"></a></h3>
 <ul>
 <li><p><a class="reference internal" href="reference/1-exiftool.html#exiftool.ExifTool.execute_json" title="exiftool.ExifTool.execute_json"><code class="xref py py-meth docutils literal notranslate"><span class="pre">exiftool.ExifTool.execute_json()</span></code></a></p>
 <blockquote>
@@ -204,11 +210,11 @@
 </section>
 </section>
 <section id="exiftoolhelper">
-<h2>ExifToolHelper<a class="headerlink" href="#exiftoolhelper" title="Permalink to this headline"></a></h2>
+<h2>ExifToolHelper<a class="headerlink" href="#exiftoolhelper" title="Link to this heading"></a></h2>
 <p>Using methods provided by <a class="reference internal" href="reference/2-helper.html#module-exiftool.ExifToolHelper" title="exiftool.ExifToolHelper"><code class="xref py py-class docutils literal notranslate"><span class="pre">exiftool.ExifToolHelper</span></code></a>:</p>
 <p>ExifToolHelper provides some of the most commonly used operations most people use <em>exiftool</em> for</p>
 <section id="getting-tags">
-<h3>Getting Tags<a class="headerlink" href="#getting-tags" title="Permalink to this headline"></a></h3>
+<h3>Getting Tags<a class="headerlink" href="#getting-tags" title="Link to this heading"></a></h3>
 <ul>
 <li><p>Get all tags on a single file</p>
 <blockquote>
@@ -271,7 +277,7 @@ Dict: Composite:ImageSize = 64 64
 </ul>
 </section>
 <section id="setting-tags">
-<h3>Setting Tags<a class="headerlink" href="#setting-tags" title="Permalink to this headline"></a></h3>
+<h3>Setting Tags<a class="headerlink" href="#setting-tags" title="Link to this heading"></a></h3>
 <ul>
 <li><p>Setting date and time of some files to current time, overwriting file, but preserving original mod date</p>
 <blockquote>
@@ -286,7 +292,7 @@ Dict: Composite:ImageSize = 64 64
     <span class="p">)</span>
 </pre></div>
 </div>
-<p>(No output is returned if successful)</p>
+<p>(<em>No output is returned if successful</em>)</p>
 </div></blockquote>
 </li>
 <li><p>Setting keywords for a file.</p>
@@ -299,13 +305,13 @@ Dict: Composite:ImageSize = 64 64
     <span class="p">)</span>
 </pre></div>
 </div>
-<p>(No output is returned if successful)</p>
+<p>(<em>No output is returned if successful</em>)</p>
 </div></blockquote>
 </li>
 </ul>
 </section>
 <section id="exceptions">
-<h3>Exceptions<a class="headerlink" href="#exceptions" title="Permalink to this headline"></a></h3>
+<h3>Exceptions<a class="headerlink" href="#exceptions" title="Link to this heading"></a></h3>
 <p>By default, ExifToolHelper has some <strong>built-in error checking</strong>, making the methods safer to use than calling the base methods directly.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -315,7 +321,7 @@ Dict: Composite:ImageSize = 64 64
 <li><p>Example using get_tags() on a list which includes a non-existent file</p>
 <blockquote>
 <div><ul>
-<li><p>Using ExifToolHelper.get_tags()</p>
+<li><p>ExifToolHelper with error-checking, using <a class="reference internal" href="reference/2-helper.html#exiftool.ExifToolHelper.get_tags" title="exiftool.ExifToolHelper.get_tags"><code class="xref py py-meth docutils literal notranslate"><span class="pre">exiftool.ExifToolHelper.get_tags()</span></code></a></p>
 <blockquote>
 <div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">exiftool</span> <span class="kn">import</span> <span class="n">ExifToolHelper</span>
 <span class="k">with</span> <span class="n">ExifToolHelper</span><span class="p">()</span> <span class="k">as</span> <span class="n">et</span><span class="p">:</span>
@@ -340,7 +346,7 @@ exiftool.exceptions.ExifToolExecuteError: execute returned a non-zero exit statu
 </div>
 </div></blockquote>
 </li>
-<li><p>Using ExifTool.execute_json()  (Note how the missing file is silently ignored and doesn’t show up in returned list.)</p>
+<li><p>ExifTool only, without error checking, using <a class="reference internal" href="reference/1-exiftool.html#exiftool.ExifTool.execute_json" title="exiftool.ExifTool.execute_json"><code class="xref py py-meth docutils literal notranslate"><span class="pre">exiftool.ExifTool.execute_json()</span></code></a> (<strong>Note how the missing file is silently ignored and doesn’t show up in returned list.</strong>)</p>
 <blockquote>
 <div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">exiftool</span> <span class="kn">import</span> <span class="n">ExifToolHelper</span>
 <span class="k">with</span> <span class="n">ExifToolHelper</span><span class="p">()</span> <span class="k">as</span> <span class="n">et</span><span class="p">:</span>
@@ -359,10 +365,10 @@ exiftool.exceptions.ExifToolExecuteError: execute returned a non-zero exit statu
 </ul>
 </div></blockquote>
 </li>
-<li><p>Example using get_tags() with a typo.  Let’s say you wanted to get_tags, but accidentally copy/pasted something and left a <code class="docutils literal notranslate"><span class="pre">=</span></code> character behind…</p>
+<li><p>Example using <a class="reference internal" href="reference/2-helper.html#exiftool.ExifToolHelper.get_tags" title="exiftool.ExifToolHelper.get_tags"><code class="xref py py-meth docutils literal notranslate"><span class="pre">exiftool.ExifToolHelper.get_tags()</span></code></a> with a typo.  Let’s say you wanted to <code class="docutils literal notranslate"><span class="pre">get_tags()</span></code>, but accidentally copy/pasted something and left a <code class="docutils literal notranslate"><span class="pre">=</span></code> character behind (deletes tag rather than getting!)…</p>
 <blockquote>
 <div><ul>
-<li><p>Using ExifToolHelper.get_tags()</p>
+<li><p>Using <a class="reference internal" href="reference/2-helper.html#exiftool.ExifToolHelper.get_tags" title="exiftool.ExifToolHelper.get_tags"><code class="xref py py-meth docutils literal notranslate"><span class="pre">exiftool.ExifToolHelper.get_tags()</span></code></a></p>
 <blockquote>
 <div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">exiftool</span> <span class="kn">import</span> <span class="n">ExifToolHelper</span>
 <span class="k">with</span> <span class="n">ExifToolHelper</span><span class="p">()</span> <span class="k">as</span> <span class="n">et</span><span class="p">:</span>
@@ -382,7 +388,7 @@ exiftool.exceptions.ExifToolTagNameError: Invalid Tag Name found: &quot;XMP:Subj
 </div>
 </div></blockquote>
 </li>
-<li><p>Using ExifTool.execute_json().  It still errors out, but more cryptic</p>
+<li><p>Using <a class="reference internal" href="reference/1-exiftool.html#exiftool.ExifTool.execute_json" title="exiftool.ExifTool.execute_json"><code class="xref py py-meth docutils literal notranslate"><span class="pre">exiftool.ExifTool.execute_json()</span></code></a>.  It still raises an exception, but more cryptic and difficult to debug</p>
 <blockquote>
 <div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">exiftool</span> <span class="kn">import</span> <span class="n">ExifTool</span>
 <span class="k">with</span> <span class="n">ExifTool</span><span class="p">()</span> <span class="k">as</span> <span class="n">et</span><span class="p">:</span>
@@ -400,7 +406,7 @@ exiftool.exceptions.ExifToolOutputEmptyError: execute_json expected output on st
 </div>
 </div></blockquote>
 </li>
-<li><p>Using ExifTool.execute().  <strong>No errors, but you have now written to the file instead of reading from it!</strong></p>
+<li><p>Using <a class="reference internal" href="reference/1-exiftool.html#exiftool.ExifTool.execute" title="exiftool.ExifTool.execute"><code class="xref py py-meth docutils literal notranslate"><span class="pre">exiftool.ExifTool.execute()</span></code></a>.  <strong>No errors, but you have now written to the file instead of reading from it!</strong></p>
 <blockquote>
 <div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">exiftool</span> <span class="kn">import</span> <span class="n">ExifTool</span>
 <span class="k">with</span> <span class="n">ExifTool</span><span class="p">()</span> <span class="k">as</span> <span class="n">et</span><span class="p">:</span>
@@ -420,7 +426,7 @@ exiftool.exceptions.ExifToolOutputEmptyError: execute_json expected output on st
 </section>
 </section>
 <section id="exiftool">
-<h2>ExifTool<a class="headerlink" href="#exiftool" title="Permalink to this headline"></a></h2>
+<h2>ExifTool<a class="headerlink" href="#exiftool" title="Link to this heading"></a></h2>
 <p>Using methods provided by <a class="reference internal" href="reference/1-exiftool.html#module-exiftool.ExifTool" title="exiftool.ExifTool"><code class="xref py py-class docutils literal notranslate"><span class="pre">exiftool.ExifTool</span></code></a></p>
 <p>Calling execute() or execute_json() provides raw functionality for advanced use cases.  Use with care!</p>
 </section>

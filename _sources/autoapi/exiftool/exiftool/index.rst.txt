@@ -33,12 +33,8 @@ Attributes
    exiftool.exiftool.ENCODING_UTF8
 
 
-.. py:data:: ENCODING_UTF8
-   :annotation: :str = utf-8
-
-   
-
 .. py:class:: ExifTool(executable = None, common_args = ['-G', '-n'], win_shell = False, config_file = None, encoding = None, logger=None)
+
 
    Bases: :py:obj:`object`
 
@@ -130,35 +126,8 @@ Attributes
 
            Passed directly into :py:attr:`logger` property.
 
-   .. py:attribute:: logger
-      
-
-      Write-only property to set the class of logging.Logger
-
-      If this is set, then status messages will log out to the given class.
-
-      .. note::
-              This can be set and unset (set to ``None``) at any time, regardless of whether the subprocess is running (:py:attr:`running` == True) or not.
-
-      :setter: Specify an object to log to.  The class is not checked, but validation is done to ensure the object has callable methods ``info``, ``warning``, ``error``, ``critical``, ``exception``.
-
-      :raises AttributeError: If object does not contain one or more of the required methods.
-      :raises TypeError: If object contains those attributes, but one or more are non-callable methods.
-
-      :type: Object
-
-
-   .. py:method:: __del__(self)
-
-
-   .. py:method:: __enter__(self)
-
-
-   .. py:method:: __exit__(self, exc_type, exc_val, exc_tb)
-
-
-   .. py:method:: block_size(self)
-      :property:
+   .. py:property:: block_size
+      :type: int
 
       Block size for communicating with *exiftool* subprocess.  Used when reading from the I/O pipe.
 
@@ -171,8 +140,8 @@ Attributes
       :type: int
 
 
-   .. py:method:: common_args(self)
-      :property:
+   .. py:property:: common_args
+      :type: Optional[List[str]]
 
       Common Arguments executed with every command passed to *exiftool* subprocess
 
@@ -199,8 +168,8 @@ Attributes
       :type: list[str], None
 
 
-   .. py:method:: config_file(self)
-      :property:
+   .. py:property:: config_file
+      :type: Optional[Union[str, pathlib.Path]]
 
       Path to config file.
 
@@ -224,8 +193,8 @@ Attributes
       .. _ExifTool documentation for -config: https://exiftool.org/exiftool_pod.html#Advanced-options
 
 
-   .. py:method:: encoding(self)
-      :property:
+   .. py:property:: encoding
+      :type: Optional[str]
 
       Encoding of Popen() communication with *exiftool* process.
 
@@ -246,8 +215,8 @@ Attributes
 
 
 
-   .. py:method:: executable(self)
-      :property:
+   .. py:property:: executable
+      :type: Union[str, pathlib.Path]
 
       Path to *exiftool* executable.
 
@@ -262,7 +231,105 @@ Attributes
       :type: str, Path
 
 
-   .. py:method:: execute(self, *params, raw_bytes = False)
+   .. py:property:: last_status
+      :type: Optional[int]
+
+      ``Exit Status Code`` for most recent result from execute()
+
+      .. note::
+              This property can be read at any time, and is not dependent on running state of ExifTool.
+
+              It is INTENTIONALLY *NOT* CLEARED on exiftool termination, to allow
+              for executing a command and terminating, but still having the result available.
+
+
+   .. py:property:: last_stderr
+      :type: Optional[Union[str, bytes]]
+
+      ``STDERR`` for most recent result from execute()
+
+      .. note::
+              The return type can be either ``str`` or ``bytes``.
+
+              If the most recent call to execute() ``raw_bytes=True``, then this will return ``bytes``.  Otherwise this will be ``str``.
+
+      .. note::
+              This property can be read at any time, and is not dependent on running state of ExifTool.
+
+              It is INTENTIONALLY *NOT* CLEARED on exiftool termination, to allow
+              for executing a command and terminating, but still having the result available.
+
+
+   .. py:property:: last_stdout
+      :type: Optional[Union[str, bytes]]
+
+      ``STDOUT`` for most recent result from execute()
+
+      .. note::
+              The return type can be either str or bytes.
+
+              If the most recent call to execute() ``raw_bytes=True``, then this will return ``bytes``.  Otherwise this will be ``str``.
+
+      .. note::
+              This property can be read at any time, and is not dependent on running state of ExifTool.
+
+              It is INTENTIONALLY *NOT* CLEARED on exiftool termination, to allow
+              for executing a command and terminating, but still having the result available.
+
+
+   .. py:property:: running
+      :type: bool
+
+      Read-only property which indicates whether the *exiftool* subprocess is running or not.
+
+      :getter: Returns current running state
+
+              .. note::
+                      This checks to make sure the process is still alive.
+
+                      If the process has died since last `running` detection, this property
+                      will detect the state change and reset the status accordingly.
+
+
+   .. py:property:: version
+      :type: str
+
+      Read-only property which is the string returned by ``exiftool -ver``
+
+      The *-ver* command is ran once at process startup and cached.
+
+      :getter: Returns cached output of ``exiftool -ver``
+
+      :raises ExifToolNotRunning: If attempting to read while not running (:py:attr:`running` == False)
+
+
+   .. py:attribute:: logger
+
+      Write-only property to set the class of logging.Logger
+
+      If this is set, then status messages will log out to the given class.
+
+      .. note::
+              This can be set and unset (set to ``None``) at any time, regardless of whether the subprocess is running (:py:attr:`running` == True) or not.
+
+      :setter: Specify an object to log to.  The class is not checked, but validation is done to ensure the object has callable methods ``info``, ``warning``, ``error``, ``critical``, ``exception``.
+
+      :raises AttributeError: If object does not contain one or more of the required methods.
+      :raises TypeError: If object contains those attributes, but one or more are non-callable methods.
+
+      :type: Object
+
+
+   .. py:method:: __del__()
+
+
+   .. py:method:: __enter__()
+
+
+   .. py:method:: __exit__(exc_type, exc_val, exc_tb)
+
+
+   .. py:method:: execute(*params, raw_bytes = False)
 
       Execute the given batch of parameters with *exiftool*.
 
@@ -312,7 +379,7 @@ Attributes
       .. _Unpacking Argument Lists: https://docs.python.org/3/tutorial/controlflow.html#unpacking-argument-lists
 
 
-   .. py:method:: execute_json(self, *params)
+   .. py:method:: execute_json(*params)
 
       Execute the given batch of parameters and parse the JSON output.
 
@@ -370,53 +437,7 @@ Attributes
       .. _Unpacking Argument Lists: https://docs.python.org/3/tutorial/controlflow.html#unpacking-argument-lists
 
 
-   .. py:method:: last_status(self)
-      :property:
-
-      ``Exit Status Code`` for most recent result from execute()
-
-      .. note::
-              This property can be read at any time, and is not dependent on running state of ExifTool.
-
-              It is INTENTIONALLY *NOT* CLEARED on exiftool termination, to allow
-              for executing a command and terminating, but still having the result available.
-
-
-   .. py:method:: last_stderr(self)
-      :property:
-
-      ``STDERR`` for most recent result from execute()
-
-      .. note::
-              The return type can be either ``str`` or ``bytes``.
-
-              If the most recent call to execute() ``raw_bytes=True``, then this will return ``bytes``.  Otherwise this will be ``str``.
-
-      .. note::
-              This property can be read at any time, and is not dependent on running state of ExifTool.
-
-              It is INTENTIONALLY *NOT* CLEARED on exiftool termination, to allow
-              for executing a command and terminating, but still having the result available.
-
-
-   .. py:method:: last_stdout(self)
-      :property:
-
-      ``STDOUT`` for most recent result from execute()
-
-      .. note::
-              The return type can be either str or bytes.
-
-              If the most recent call to execute() ``raw_bytes=True``, then this will return ``bytes``.  Otherwise this will be ``str``.
-
-      .. note::
-              This property can be read at any time, and is not dependent on running state of ExifTool.
-
-              It is INTENTIONALLY *NOT* CLEARED on exiftool termination, to allow
-              for executing a command and terminating, but still having the result available.
-
-
-   .. py:method:: run(self)
+   .. py:method:: run()
 
       Start an *exiftool* subprocess in batch mode.
 
@@ -438,21 +459,7 @@ Attributes
       :raises ExifToolVersionError: :py:attr:`exiftool.constants.EXIFTOOL_MINIMUM_VERSION` not met.  ExifTool process will be automatically terminated.
 
 
-   .. py:method:: running(self)
-      :property:
-
-      Read-only property which indicates whether the *exiftool* subprocess is running or not.
-
-      :getter: Returns current running state
-
-              .. note::
-                      This checks to make sure the process is still alive.
-
-                      If the process has died since last `running` detection, this property
-                      will detect the state change and reset the status accordingly.
-
-
-   .. py:method:: set_json_loads(self, json_loads, **kwargs)
+   .. py:method:: set_json_loads(json_loads, **kwargs)
 
       **Advanced**: Override default built-in ``json.loads()`` method.  The method is only used once in :py:meth:`execute_json`
 
@@ -494,7 +501,7 @@ Attributes
       .. _ujson: https://pypi.org/project/ujson/
 
 
-   .. py:method:: terminate(self, timeout = 30, _del = False)
+   .. py:method:: terminate(timeout = 30, _del = False)
 
       Terminate the *exiftool* subprocess.
 
@@ -508,16 +515,10 @@ Attributes
       .. _starting a thread in __del__ hangs at interpreter shutdown: https://github.com/python/cpython/issues/87950
 
 
-   .. py:method:: version(self)
-      :property:
 
-      Read-only property which is the string returned by ``exiftool -ver``
+.. py:data:: ENCODING_UTF8
+   :type: str
+   :value: 'utf-8'
 
-      The *-ver* command is ran once at process startup and cached.
-
-      :getter: Returns cached output of ``exiftool -ver``
-
-      :raises ExifToolNotRunning: If attempting to read while not running (:py:attr:`running` == False)
-
-
+   
 

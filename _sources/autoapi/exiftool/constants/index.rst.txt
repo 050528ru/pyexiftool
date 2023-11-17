@@ -13,7 +13,8 @@ Module Contents
 ---------------
 
 .. py:data:: DEFAULT_BLOCK_SIZE
-   :annotation: :int = 4096
+   :type: int
+   :value: 4096
 
    The default block size when reading from exiftool.  The standard value
    should be fine, though other values might give better performance in
@@ -21,23 +22,20 @@ Module Contents
 
 
 .. py:data:: DEFAULT_EXECUTABLE
-   :annotation: :str
+   :type: str
 
    The name of the default executable to run.
 
-   ``exiftool`` (Linux) or ``exiftool.exe`` (Windows)
+   ``exiftool.exe`` (Windows) or ``exiftool`` (Linux/Mac/non-Windows platforms)
 
    By default, the executable is searched for on one of the paths listed in the
-   ``PATH`` environment variable.  If it's not on the ``PATH``, a full path should be given to the ExifTool constructor.
+   ``PATH`` environment variable.  If it's not on the ``PATH``, a full path should be specified in the
+   ``executable`` argument of the ExifTool constructor (:py:meth:`exiftool.ExifTool.__init__`).
 
-
-.. py:data:: DEFAULT_EXECUTABLE
-   :annotation: = exiftool.exe
-
-   
 
 .. py:data:: EXIFTOOL_MINIMUM_VERSION
-   :annotation: = 12.15
+   :type: str
+   :value: '12.15'
 
    this is the minimum *exiftool* version required for current version of PyExifTool
 
@@ -46,19 +44,20 @@ Module Contents
 
 
 .. py:data:: PLATFORM_LINUX
-   :annotation: :bool
+   :type: bool
 
    sys.platform check, set to True if Linux
 
 
 .. py:data:: PLATFORM_WINDOWS
-   :annotation: :bool
+   :type: bool
 
    sys.platform check, set to True if Windows
 
 
 .. py:data:: PR_SET_PDEATHSIG
-   :annotation: :int = 1
+   :type: int
+   :value: 1
 
    Extracted from linux/prctl.h
 
@@ -66,7 +65,8 @@ Module Contents
 
 
 .. py:data:: SW_FORCEMINIMIZE
-   :annotation: :int = 11
+   :type: int
+   :value: 11
 
    Windows ShowWindow constant from win32con
 

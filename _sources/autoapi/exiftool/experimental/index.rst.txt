@@ -44,17 +44,8 @@ Attributes
    exiftool.experimental.basestring
 
 
-.. py:data:: KW_TAGNAME
-   :annotation: = IPTC:Keywords
-
-   
-
-.. py:data:: basestring
-   
-
-   
-
 .. py:class:: ExifToolAlpha(auto_start = True, check_execute = True, check_tag_names = True, **kwargs)
+
 
    Bases: :py:obj:`exiftool.helper.ExifToolHelper`
 
@@ -90,21 +81,21 @@ Attributes
 
    :param kwargs: All other parameters are passed directly to the super-class constructor: :py:meth:`exiftool.ExifTool.__init__()`
 
-   .. py:method:: copy_tags(self, from_filename, to_filename)
+   .. py:method:: copy_tags(from_filename, to_filename)
 
       Copy all tags from one file to another.
 
 
-   .. py:method:: execute_json_wrapper(self, filenames, params=None, retry_on_error=True)
+   .. py:method:: execute_json_wrapper(filenames, params=None, retry_on_error=True)
 
 
-   .. py:method:: get_metadata_batch_wrapper(self, filenames, params=None)
+   .. py:method:: get_metadata_batch_wrapper(filenames, params=None)
 
 
-   .. py:method:: get_metadata_wrapper(self, filename, params=None)
+   .. py:method:: get_metadata_wrapper(filename, params=None)
 
 
-   .. py:method:: get_tag(self, filename, tag)
+   .. py:method:: get_tag(filename, tag)
 
       Extract a single tag from a single file.
 
@@ -114,7 +105,7 @@ Attributes
       Does existence checks
 
 
-   .. py:method:: get_tag_batch(self, filenames, tag)
+   .. py:method:: get_tag_batch(filenames, tag)
 
       Extract a single tag from the given files.
 
@@ -127,19 +118,19 @@ Attributes
       non-existent tags, in the same order as ``filenames``.
 
 
-   .. py:method:: get_tag_batch_wrapper(self, tag, filenames, params=None)
+   .. py:method:: get_tag_batch_wrapper(tag, filenames, params=None)
 
 
-   .. py:method:: get_tag_wrapper(self, tag, filename, params=None)
+   .. py:method:: get_tag_wrapper(tag, filename, params=None)
 
 
-   .. py:method:: get_tags_batch_wrapper(self, tags, filenames, params=None)
+   .. py:method:: get_tags_batch_wrapper(tags, filenames, params=None)
 
 
-   .. py:method:: get_tags_wrapper(self, tags, filename, params=None)
+   .. py:method:: get_tags_wrapper(tags, filename, params=None)
 
 
-   .. py:method:: set_keywords(self, filename, mode, keywords)
+   .. py:method:: set_keywords(filename, mode, keywords)
 
       Modifies the keywords tag for the given file.
 
@@ -148,7 +139,7 @@ Attributes
       as a string.
 
 
-   .. py:method:: set_keywords_batch(self, files, mode, keywords)
+   .. py:method:: set_keywords_batch(files, mode, keywords)
 
       Modifies the keywords tag for the given files.
 
@@ -191,4 +182,14 @@ Attributes
 
 .. py:function:: strip_nl(s)
 
+
+.. py:data:: KW_TAGNAME
+   :value: 'IPTC:Keywords'
+
+   
+
+.. py:data:: basestring
+   :value: ()
+
+   
 

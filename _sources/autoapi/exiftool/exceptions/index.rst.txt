@@ -14,6 +14,7 @@ Module Contents
 
 .. py:exception:: ExifToolException
 
+
    Bases: :py:obj:`Exception`
 
    .. autoapi-inheritance-diagram:: exiftool.exceptions.ExifToolException
@@ -25,6 +26,7 @@ Module Contents
 
 
 .. py:exception:: ExifToolExecuteError(exit_status, cmd_stdout, cmd_stderr, params)
+
 
    Bases: :py:obj:`ExifToolExecuteException`
 
@@ -42,6 +44,7 @@ Module Contents
 
 
 .. py:exception:: ExifToolExecuteException(message, exit_status, cmd_stdout, cmd_stderr, params)
+
 
    Bases: :py:obj:`ExifToolException`
 
@@ -64,6 +67,7 @@ Module Contents
 
 .. py:exception:: ExifToolJSONInvalidError(exit_status, cmd_stdout, cmd_stderr, params)
 
+
    Bases: :py:obj:`ExifToolExecuteException`
 
    .. autoapi-inheritance-diagram:: exiftool.exceptions.ExifToolJSONInvalidError
@@ -81,6 +85,7 @@ Module Contents
 
 .. py:exception:: ExifToolNotRunning(message)
 
+
    Bases: :py:obj:`ExifToolProcessStateError`
 
    .. autoapi-inheritance-diagram:: exiftool.exceptions.ExifToolNotRunning
@@ -92,6 +97,7 @@ Module Contents
 
 
 .. py:exception:: ExifToolOutputEmptyError(exit_status, cmd_stdout, cmd_stderr, params)
+
 
    Bases: :py:obj:`ExifToolExecuteException`
 
@@ -110,6 +116,7 @@ Module Contents
 
 .. py:exception:: ExifToolProcessStateError
 
+
    Bases: :py:obj:`ExifToolException`
 
    .. autoapi-inheritance-diagram:: exiftool.exceptions.ExifToolProcessStateError
@@ -122,6 +129,7 @@ Module Contents
 
 .. py:exception:: ExifToolRunning(message)
 
+
    Bases: :py:obj:`ExifToolProcessStateError`
 
    .. autoapi-inheritance-diagram:: exiftool.exceptions.ExifToolRunning
@@ -133,6 +141,7 @@ Module Contents
 
 
 .. py:exception:: ExifToolTagNameError(bad_tag)
+
 
    Bases: :py:obj:`ExifToolException`
 
@@ -147,6 +156,7 @@ Module Contents
 
 
 .. py:exception:: ExifToolVersionError
+
 
    Bases: :py:obj:`ExifToolException`
 

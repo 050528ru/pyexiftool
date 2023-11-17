@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Release Process &mdash; PyExifTool 0.5.6 documentation</title>
@@ -12,10 +12,11 @@
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
-        <script src="../_static/doctools.js"></script>
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=722679d6"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" /> 
@@ -26,14 +27,18 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="../index.html" class="icon icon-home"> PyExifTool
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            PyExifTool
           </a>
               <div class="version">
                 0.5
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -66,8 +71,8 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>Release Process</li>
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Release Process</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/maintenance/release-process.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -78,10 +83,10 @@
            <div itemprop="articleBody">
              
   <section id="release-process">
-<h1>Release Process<a class="headerlink" href="#release-process" title="Permalink to this headline"></a></h1>
+<h1>Release Process<a class="headerlink" href="#release-process" title="Link to this heading"></a></h1>
 <p>This page documents the steps to be taken to release a new version of PyExifTool.</p>
 <section id="source-preparation">
-<h2>Source Preparation<a class="headerlink" href="#source-preparation" title="Permalink to this headline"></a></h2>
+<h2>Source Preparation<a class="headerlink" href="#source-preparation" title="Link to this heading"></a></h2>
 <ol class="arabic simple">
 <li><p>Update the version number in <code class="docutils literal notranslate"><span class="pre">exiftool/__init__.py</span></code></p></li>
 <li><p>Update the docs copyright year <code class="docutils literal notranslate"><span class="pre">docs/source/conf.py</span></code> and in source files</p></li>
@@ -93,7 +98,7 @@
 </ol>
 </section>
 <section id="pre-requisites">
-<h2>Pre-Requisites<a class="headerlink" href="#pre-requisites" title="Permalink to this headline"></a></h2>
+<h2>Pre-Requisites<a class="headerlink" href="#pre-requisites" title="Link to this heading"></a></h2>
 <p>Make sure the latest packages are installed.</p>
 <ol class="arabic simple">
 <li><p>pip: <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">-m</span> <span class="pre">pip</span> <span class="pre">install</span> <span class="pre">--upgrade</span> <span class="pre">pip</span></code></p></li>
@@ -102,21 +107,21 @@
 </ol>
 </section>
 <section id="run-tests">
-<h2>Run Tests<a class="headerlink" href="#run-tests" title="Permalink to this headline"></a></h2>
+<h2>Run Tests<a class="headerlink" href="#run-tests" title="Link to this heading"></a></h2>
 <ol class="arabic simple">
 <li><p>Run in standard unittest: <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">-m</span> <span class="pre">unittest</span> <span class="pre">-v</span></code></p></li>
 <li><p>Run in PyTest: <code class="docutils literal notranslate"><span class="pre">scripts\pytest.bat</span></code></p></li>
 </ol>
 </section>
 <section id="build-and-check">
-<h2>Build and Check<a class="headerlink" href="#build-and-check" title="Permalink to this headline"></a></h2>
+<h2>Build and Check<a class="headerlink" href="#build-and-check" title="Link to this heading"></a></h2>
 <ol class="arabic simple">
 <li><p>Build package: <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">-m</span> <span class="pre">build</span></code></p></li>
 <li><p><a class="reference external" href="https://packaging.python.org/guides/making-a-pypi-friendly-readme/#validating-restructuredtext-markup">Validating reStructuredText markup</a>: <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">-m</span> <span class="pre">twine</span> <span class="pre">check</span> <span class="pre">dist/*</span></code></p></li>
 </ol>
 </section>
 <section id="upload-to-test-pypi">
-<h2>Upload to Test PyPI<a class="headerlink" href="#upload-to-test-pypi" title="Permalink to this headline"></a></h2>
+<h2>Upload to Test PyPI<a class="headerlink" href="#upload-to-test-pypi" title="Link to this heading"></a></h2>
 <p>Set up the <code class="docutils literal notranslate"><span class="pre">$HOME/.pypirc</span></code> (Linux) or <code class="docutils literal notranslate"><span class="pre">%UserProfile%\.pypirc</span></code> (Windows)</p>
 <ol class="arabic">
 <li><p><code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">-m</span> <span class="pre">twine</span> <span class="pre">upload</span> <span class="pre">--repository</span> <span class="pre">testpypi</span> <span class="pre">dist/*</span></code></p></li>
@@ -144,14 +149,14 @@
 </ol>
 </section>
 <section id="release">
-<h2>Release<a class="headerlink" href="#release" title="Permalink to this headline"></a></h2>
+<h2>Release<a class="headerlink" href="#release" title="Link to this heading"></a></h2>
 <ol class="arabic">
 <li><p>Be very sure all the tests pass and the package is good, because <a class="reference external" href="https://pypi.org/help/#file-name-reuse">PyPI does not allow for a filename to be reused</a></p></li>
 <li><p>Release to production PyPI: <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">-m</span> <span class="pre">twine</span> <span class="pre">upload</span> <span class="pre">dist/*</span></code></p></li>
 <li><p>If needed, create a tag, and a GitHub release with the <em>whl</em> file</p>
 <blockquote>
-<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git tag -a vX.X.X
-git push --tags
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>tag<span class="w"> </span>-a<span class="w"> </span>vX.X.X
+git<span class="w"> </span>push<span class="w"> </span>--tags
 </pre></div>
 </div>
 </div></blockquote>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Frequently Asked Questions &mdash; PyExifTool 0.5.6 documentation</title>
@@ -12,10 +12,11 @@
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
-        <script src="_static/doctools.js"></script>
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=722679d6"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -28,14 +29,18 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="index.html" class="icon icon-home"> PyExifTool
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            PyExifTool
           </a>
               <div class="version">
                 0.5
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -58,6 +63,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#ways-to-make-the-ouptut-match">Ways to make the ouptut match</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#i-can-run-this-on-the-command-line-but-it-doesn-t-work-in-pyexiftool">I can run this on the command-line but it doesn’t work in PyExifTool</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#pyexiftool-json-turns-some-text-fields-into-numbers">PyExifTool json turns some text fields into numbers</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#workaround-to-enable-output-as-string">Workaround to enable output as string</a></li>
 </ul>
@@ -83,8 +89,8 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>Frequently Asked Questions</li>
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Frequently Asked Questions</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/faq.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -95,13 +101,13 @@
            <div itemprop="articleBody">
              
   <section id="frequently-asked-questions">
-<h1>Frequently Asked Questions<a class="headerlink" href="#frequently-asked-questions" title="Permalink to this headline"></a></h1>
+<h1>Frequently Asked Questions<a class="headerlink" href="#frequently-asked-questions" title="Link to this heading"></a></h1>
 <section id="pyexiftool-output-is-different-from-the-exiftool-command-line">
-<h2>PyExifTool output is different from the exiftool command line<a class="headerlink" href="#pyexiftool-output-is-different-from-the-exiftool-command-line" title="Permalink to this headline"></a></h2>
+<h2>PyExifTool output is different from the exiftool command line<a class="headerlink" href="#pyexiftool-output-is-different-from-the-exiftool-command-line" title="Link to this heading"></a></h2>
 <p>One of the most frequently asked questions relates to the <em>default output</em> of PyExifTool.</p>
 <p>For example, using the <a class="reference external" href="https://github.com/sylikc/pyexiftool/blob/master/tests/files/rose.jpg">rose.jpg in tests</a>, let’s get <strong>all JFIF tags</strong>:</p>
 <section id="default-exiftool-output">
-<h3>Default exiftool output<a class="headerlink" href="#default-exiftool-output" title="Permalink to this headline"></a></h3>
+<h3>Default exiftool output<a class="headerlink" href="#default-exiftool-output" title="Link to this heading"></a></h3>
 <p>$ <code class="docutils literal notranslate"><span class="pre">exiftool</span> <span class="pre">-JFIF:all</span> <span class="pre">rose.jpg</span></code></p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>JFIF Version                    : 1.01
 Resolution Unit                 : inches
@@ -111,7 +117,7 @@ Y Resolution                    : 72
 </div>
 </section>
 <section id="default-pyexiftool-output">
-<h3>Default PyExifTool output<a class="headerlink" href="#default-pyexiftool-output" title="Permalink to this headline"></a></h3>
+<h3>Default PyExifTool output<a class="headerlink" href="#default-pyexiftool-output" title="Link to this heading"></a></h3>
 <p>from PyExifTool, using the following code:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">exiftool</span>
 <span class="k">with</span> <span class="n">exiftool</span><span class="o">.</span><span class="n">ExifTool</span><span class="p">()</span> <span class="k">as</span> <span class="n">et</span><span class="p">:</span>
@@ -127,7 +133,7 @@ Y Resolution                    : 72
 </div>
 </section>
 <section id="what-s-going-on">
-<h3>What’s going on?<a class="headerlink" href="#what-s-going-on" title="Permalink to this headline"></a></h3>
+<h3>What’s going on?<a class="headerlink" href="#what-s-going-on" title="Link to this heading"></a></h3>
 <p>The reason for the different default output is that PyExifTool, by default, includes two arguments which make <em>exiftool</em> easier to use: <code class="docutils literal notranslate"><span class="pre">-G,</span> <span class="pre">-n</span></code>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -143,7 +149,7 @@ Y Resolution                    : 72
 <p>(You can also change <code class="docutils literal notranslate"><span class="pre">common_args</span></code> on an existing instance using <a class="reference internal" href="reference/1-exiftool.html#exiftool.ExifTool.common_args" title="exiftool.ExifTool.common_args"><code class="xref py py-attr docutils literal notranslate"><span class="pre">exiftool.ExifTool.common_args</span></code></a>, as long as the subprocess is not <a class="reference internal" href="reference/1-exiftool.html#exiftool.ExifTool.running" title="exiftool.ExifTool.running"><code class="xref py py-attr docutils literal notranslate"><span class="pre">exiftool.ExifTool.running</span></code></a>)</p>
 </section>
 <section id="ways-to-make-the-ouptut-match">
-<h3>Ways to make the ouptut match<a class="headerlink" href="#ways-to-make-the-ouptut-match" title="Permalink to this headline"></a></h3>
+<h3>Ways to make the ouptut match<a class="headerlink" href="#ways-to-make-the-ouptut-match" title="Link to this heading"></a></h3>
 <p>So if you want to have the ouput match (<em>useful for debugging</em>) between PyExifTool and exiftool, either:</p>
 <ul>
 <li><p><strong>Enable print conversion on exiftool command line</strong>:</p>
@@ -176,8 +182,44 @@ Y Resolution                    : 72
 </ul>
 </section>
 </section>
+<section id="i-can-run-this-on-the-command-line-but-it-doesn-t-work-in-pyexiftool">
+<span id="shlex-split"></span><h2>I can run this on the command-line but it doesn’t work in PyExifTool<a class="headerlink" href="#i-can-run-this-on-the-command-line-but-it-doesn-t-work-in-pyexiftool" title="Link to this heading"></a></h2>
+<p>A frequent problem encountered by first-time users, is figuring out how to properly split their arguments into a call to PyExifTool.</p>
+<p>As noted in the <a class="reference internal" href="examples.html#examples-input-params"><span class="std std-ref">Quick Start Examples</span></a>:</p>
+<blockquote>
+<div><p>If there is an <strong>unquoted space on the command line</strong> to <em>exiftool</em>, it’s a <strong>separate argument to the method</strong> in PyExifTool.</p>
+</div></blockquote>
+<p>So, what does this look like in practice?</p>
+<p>Use <a class="reference external" href="https://docs.python.org/library/shlex.html">Python’s shlex library</a> as a quick and easy way to figure out what the parameters to <a class="reference internal" href="reference/1-exiftool.html#exiftool.ExifTool.execute" title="exiftool.ExifTool.execute"><code class="xref py py-meth docutils literal notranslate"><span class="pre">exiftool.ExifTool.execute()</span></code></a> or <a class="reference internal" href="reference/1-exiftool.html#exiftool.ExifTool.execute_json" title="exiftool.ExifTool.execute_json"><code class="xref py py-meth docutils literal notranslate"><span class="pre">exiftool.ExifTool.execute_json()</span></code></a> should be.</p>
+<ul>
+<li><p>Sample exiftool command line (with multiple quoted and unquoted parameters):</p>
+<blockquote>
+<div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>exiftool -v0 -preserve -overwrite_original -api largefilesupport=1 -api &quot;QuickTimeUTC=1&quot; &quot;-EXIF:DateTimeOriginal+=1:2:3 4:5:6&quot; -XMP:DateTimeOriginal=&quot;2006:05:04 03:02:01&quot; -gpsaltituderef=&quot;Above Sea Level&quot; -make= test.mov
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>Using <code class="docutils literal notranslate"><span class="pre">shlex</span></code> to figure out the right argument list:</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">shlex</span><span class="o">,</span> <span class="nn">exiftool</span>
+<span class="k">with</span> <span class="n">exiftool</span><span class="o">.</span><span class="n">ExifToolHelper</span><span class="p">()</span> <span class="k">as</span> <span class="n">et</span><span class="p">:</span>
+        <span class="n">params</span> <span class="o">=</span> <span class="n">shlex</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;-v0 -preserve -overwrite_original -api largefilesupport=1 &quot;-EXIF:DateTimeOriginal+=1:2:3 4:5:6&quot; -XMP:DateTimeOriginal=&quot;2006:05:04 03:02:01&quot; -gpsaltituderef=&quot;Above Sea Level&quot; -make= test.mov&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+        <span class="c1"># Output: [&#39;-v0&#39;, &#39;-preserve&#39;, &#39;-overwrite_original&#39;, &#39;-api&#39;, &#39;largefilesupport=1&#39;, &#39;-api&#39;, &#39;QuickTimeUTC=1&#39;, &#39;-EXIF:DateTimeOriginal+=1:2:3 4:5:6&#39;, &#39;-XMP:DateTimeOriginal=2006:05:04 03:02:01&#39;, &#39;-gpsaltituderef=Above Sea Level&#39;, &#39;-make=&#39;, &#39;test.mov&#39;]</span>
+        <span class="n">et</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="o">*</span><span class="n">params</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code class="docutils literal notranslate"><span class="pre">shlex.split()</span></code> is a useful <em>tool to simplify discovery</em> of the correct arguments needed to call PyExifTool.</p>
+<p>However, since spliting and constructing immutable strings in Python is <strong>slower than building the parameter list properly</strong>, this method is <em>only recommended for</em> <strong>debugging</strong>!</p>
+</div>
+</div></blockquote>
+</li>
+</ul>
+</section>
 <section id="pyexiftool-json-turns-some-text-fields-into-numbers">
-<span id="set-json-loads-faq"></span><h2>PyExifTool json turns some text fields into numbers<a class="headerlink" href="#pyexiftool-json-turns-some-text-fields-into-numbers" title="Permalink to this headline"></a></h2>
+<span id="set-json-loads-faq"></span><h2>PyExifTool json turns some text fields into numbers<a class="headerlink" href="#pyexiftool-json-turns-some-text-fields-into-numbers" title="Link to this heading"></a></h2>
 <p>A strange behavior of <em>exiftool</em> is documented in the <a class="reference external" href="https://exiftool.org/exiftool_pod.html#OPTIONS">exiftool documentation</a>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span><span class="n">j</span><span class="p">[[</span><span class="o">+</span><span class="p">]</span><span class="o">=</span><span class="n">JSONFILE</span><span class="p">]</span> <span class="p">(</span><span class="o">-</span><span class="n">json</span><span class="p">)</span>
 
@@ -199,7 +241,7 @@ Y Resolution                    : 72
 </pre></div>
 </div>
 <section id="workaround-to-enable-output-as-string">
-<h3>Workaround to enable output as string<a class="headerlink" href="#workaround-to-enable-output-as-string" title="Permalink to this headline"></a></h3>
+<h3>Workaround to enable output as string<a class="headerlink" href="#workaround-to-enable-output-as-string" title="Link to this heading"></a></h3>
 <p>There is no universal fix which wouldn’t affect other behaviors in PyExifTool, so this is an advanced workaround if you encounter this specific problem.</p>
 <p>PyExifTool does not do any processing on the fields returned by <em>exiftool</em>.  In effect, what is returned is processed directly by <code class="docutils literal notranslate"><span class="pre">json.loads()</span></code> by default.</p>
 <p>You can change the behavior of the json string parser, or specify a different one using <a class="reference internal" href="reference/1-exiftool.html#exiftool.ExifTool.set_json_loads" title="exiftool.ExifTool.set_json_loads"><code class="xref py py-meth docutils literal notranslate"><span class="pre">exiftool.ExifTool.set_json_loads()</span></code></a>.</p>
@@ -213,7 +255,7 @@ However, as you can see below, it also <em>changes the behavior of all float fie
         <span class="n">et</span><span class="o">.</span><span class="n">set_tags</span><span class="p">(</span><span class="s2">&quot;rose.jpg&quot;</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;Comment&quot;</span><span class="p">:</span> <span class="s2">&quot;1.10&quot;</span><span class="p">})</span>  <span class="c1"># string: &quot;1.10&quot; == &quot;1.10&quot;</span>
 
         <span class="c1"># FocalLength is a FLOAT field</span>
-        <span class="n">et</span><span class="o">.</span><span class="n">set_tags</span><span class="p">(</span><span class="s2">&quot;rose.jpg&quot;</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;FocalLength&quot;</span><span class="p">:</span> <span class="mf">1.10</span><span class="p">})</span>  <span class="c1"># float: 1.1 == &quot;1.1&quot;</span>
+        <span class="n">et</span><span class="o">.</span><span class="n">set_tags</span><span class="p">(</span><span class="s2">&quot;rose.jpg&quot;</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;FocalLength&quot;</span><span class="p">:</span> <span class="mf">1.10</span><span class="p">})</span>  <span class="c1"># float: 1.1 != &quot;1.1&quot;</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">et</span><span class="o">.</span><span class="n">get_tags</span><span class="p">(</span><span class="s2">&quot;rose.jpg&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;Comment&quot;</span><span class="p">,</span> <span class="s2">&quot;FocalLength&quot;</span><span class="p">]))</span>
 
         <span class="c1"># Prints: [{&#39;SourceFile&#39;: &#39;rose.jpg&#39;, &#39;File:Comment&#39;: &#39;1.10&#39;, &#39;EXIF:FocalLength&#39;: &#39;1.1&#39;}]</span>
@@ -229,7 +271,7 @@ this workaround will allow you to configure PyExifTool to work in your environme
 </section>
 </section>
 <section id="i-would-like-to-use-a-faster-json-string-parser">
-<h2>I would like to use a faster json string parser<a class="headerlink" href="#i-would-like-to-use-a-faster-json-string-parser" title="Permalink to this headline"></a></h2>
+<h2>I would like to use a faster json string parser<a class="headerlink" href="#i-would-like-to-use-a-faster-json-string-parser" title="Link to this heading"></a></h2>
 <p>By default, PyExifTool uses the built-in <code class="docutils literal notranslate"><span class="pre">json</span></code> library to load the json string returned by <em>exiftool</em>.  If you would like to use an alternate library, set it manually using <a class="reference internal" href="reference/1-exiftool.html#exiftool.ExifTool.set_json_loads" title="exiftool.ExifTool.set_json_loads"><code class="xref py py-meth docutils literal notranslate"><span class="pre">exiftool.ExifTool.set_json_loads()</span></code></a></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">exiftool</span><span class="o">,</span> <span class="nn">json</span>
 <span class="k">with</span> <span class="n">exiftool</span><span class="o">.</span><span class="n">ExifToolHelper</span><span class="p">()</span> <span class="k">as</span> <span class="n">et</span><span class="p">:</span>
@@ -244,7 +286,7 @@ this workaround will allow you to configure PyExifTool to work in your environme
 </div>
 </section>
 <section id="i-m-getting-an-error-how-do-i-debug-pyexiftool-output">
-<h2>I’m getting an error! How do I debug PyExifTool output?<a class="headerlink" href="#i-m-getting-an-error-how-do-i-debug-pyexiftool-output" title="Permalink to this headline"></a></h2>
+<h2>I’m getting an error! How do I debug PyExifTool output?<a class="headerlink" href="#i-m-getting-an-error-how-do-i-debug-pyexiftool-output" title="Link to this heading"></a></h2>
 <p>To assist debugging, ExifTool has a <code class="docutils literal notranslate"><span class="pre">logger</span></code> in the constructor <a class="reference internal" href="reference/1-exiftool.html#exiftool.ExifTool.__init__" title="exiftool.ExifTool.__init__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">exiftool.ExifTool.__init__()</span></code></a>.  You can also specify the logger after constructing the object by using the <a class="reference internal" href="reference/1-exiftool.html#exiftool.ExifTool.logger" title="exiftool.ExifTool.logger"><code class="xref py py-attr docutils literal notranslate"><span class="pre">exiftool.ExifTool.logger</span></code></a> property.</p>
 <p>First construct the logger object.  The example below using the most common way to construct using <code class="docutils literal notranslate"><span class="pre">getLogger(__name__)</span></code>.  See more examples on <a class="reference external" href="https://docs.python.org/3/howto/logging.html#advanced-logging-tutorial">Python logging - Advanced Logging Tutorial</a></p>
 <p>Example usage:</p>

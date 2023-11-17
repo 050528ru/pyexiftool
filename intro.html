@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Introduction &mdash; PyExifTool 0.5.6 documentation</title>
@@ -12,10 +12,11 @@
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
-        <script src="_static/doctools.js"></script>
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=722679d6"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -28,14 +29,18 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="index.html" class="icon icon-home"> PyExifTool
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            PyExifTool
           </a>
               <div class="version">
                 0.5
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -76,8 +81,8 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>Introduction</li>
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Introduction</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/intro.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -88,7 +93,7 @@
            <div itemprop="articleBody">
              
   <section id="introduction">
-<h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline"></a></h1>
+<h1>Introduction<a class="headerlink" href="#introduction" title="Link to this heading"></a></h1>
 <span class="target" id="id1"></span><p>PyExifTool is a Python library to communicate with an instance of
 <a class="reference external" href="https://exiftool.org/">Phil Harvey’s ExifTool</a> command-line application.</p>
 <p>The library provides the class <code class="docutils literal notranslate"><span class="pre">exiftool.ExifTool</span></code> that runs the command-line
@@ -99,14 +104,14 @@ single instance needs to be launched and can be reused for many
 queries.  This is much more efficient than launching a separate
 process for every single query.</p>
 <section id="concepts">
-<h2>Concepts<a class="headerlink" href="#concepts" title="Permalink to this headline"></a></h2>
+<h2>Concepts<a class="headerlink" href="#concepts" title="Link to this heading"></a></h2>
 <p>As noted in the <a class="reference internal" href="#id1"><span class="std std-ref">introduction</span></a>, PyExifTool is used to <strong>communicate</strong> with an instance of the external ExifTool process.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>PyExifTool cannot do what ExifTool does not do.  If you’re not yet familiar with the capabilities of PH’s ExifTool, please head over to <a class="reference external" href="https://exiftool.org/">ExifTool by Phil Harvey</a> homepage and read up on how to use it, and what it’s capable of.</p>
 </div>
 <section id="what-pyexiftool-is">
-<h3>What PyExifTool Is<a class="headerlink" href="#what-pyexiftool-is" title="Permalink to this headline"></a></h3>
+<h3>What PyExifTool Is<a class="headerlink" href="#what-pyexiftool-is" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>… is a wrapper for PH’s Exiftool, hence it can do everything PH’s ExifTool can do.</p></li>
 <li><p>… is a library which adds some helper functionality around ExifTool to make it easier to work with in Python.</p></li>
@@ -115,7 +120,7 @@ process for every single query.</p>
 </ul>
 </section>
 <section id="what-pyexiftool-is-not">
-<h3>What PyExifTool Is NOT<a class="headerlink" href="#what-pyexiftool-is-not" title="Permalink to this headline"></a></h3>
+<h3>What PyExifTool Is NOT<a class="headerlink" href="#what-pyexiftool-is-not" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>… is NOT a direct subtitute for Phil Harvey’s ExifTool.  The <cite>exiftool</cite> executable must still be installed and available for PyExifTool to use.</p></li>
 <li><p>… is NOT a library which does direct image manipulation (ex. Python <a class="reference external" href="https://pillow.readthedocs.io/en/stable/">Pillow</a>).</p></li>
@@ -123,8 +128,8 @@ process for every single query.</p>
 </section>
 </section>
 <section id="nomenclature">
-<h2>Nomenclature<a class="headerlink" href="#nomenclature" title="Permalink to this headline"></a></h2>
-<p>PyExifTool’s namespace is <em>exiftool</em>.  While naming the library the same name of the tool it’s meant to interface with, it can cause some ambiguity when describing it in docs.
+<h2>Nomenclature<a class="headerlink" href="#nomenclature" title="Link to this heading"></a></h2>
+<p>PyExifTool’s namespace is <em>exiftool</em>.  Since library name the same name of the tool it’s meant to interface with, it can cause some ambiguity when describing it in docs.
 Hence, here’s some common nomenclature used.</p>
 <p>Because the term <cite>exiftool</cite> is overloaded (lowercase, CapWords case, …) and can mean several things:</p>
 <ul class="simple">
